@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import { UNSAFE_createClientRoutesWithHMRRevalidationOptOut } from "react-router-dom";
 
 const userSchema = new Schema({
-    username: {
+    userName: {
         type: String,
         required: true,
         unique: true,

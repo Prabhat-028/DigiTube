@@ -20,7 +20,7 @@ import { v2 as cloudinary } from "cloudinary";
 			return response;
 		} catch (error) {
 			console.log(error);
-			fs.unlinkSync(localFilePath);/above
+			fs.unlinkSync(localFilePath);
 			
 		}	
 	}
@@ -60,4 +60,5 @@ import { v2 as cloudinary } from "cloudinary";
 
     // console.log(autoCropUrl);
 })();
+export { uploadOnCloudinary };
 
