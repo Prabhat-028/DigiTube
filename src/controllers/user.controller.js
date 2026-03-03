@@ -15,13 +15,14 @@ const registerUser = asyncHandler(async (req, res) => {
     if (registerdUser) {
         throw new ApiError(409, "Already registered ");
     }
-
-    const avatarLocalPath = req.fields?.avatar[0]?.path;
-    const coverImageLocalPath = req.fields?.coverImage[0]?.path;
+	console.log("avatar:-", req.files);
+    const avatarLocalPath = req.files?.avatar[0]?.path;
+    const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     if (!avatarLocalPath) {
         throw new ApiError(409, "Avatar Image is required!!");
-    }
+	}
+	
     const avatar = await uploadOnCloudinary(avatarLocalPath);
     const coverImage = await uploadOnCloudinary(coverImageLocalPath);
     if (!avatar) {
@@ -56,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Unable to create your account right now");
     }
 
-	return res.status(201).json(ApiResponse(200,registerUser,"Registration Successfull!!"))
+	return res.status(201).json(new ApiResponse(200,registerUser,"Registration Successfull!!"))
     console.log("Email:-", email);
 });
 export default registerUser;
